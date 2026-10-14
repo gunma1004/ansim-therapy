@@ -8,15 +8,7 @@ const PHONE_RAW = "05082011208";
 export const metadata: Metadata = {
   title: "서울 출장 안심케어 마사지 | 일정에 맞춘 코스 비교 - 안심테라피",
   description:
-    "안심테라피 수도권(서울·경기·인천) 출장 안심케어 안내. 스웨디시·아로마·타이 케어 5코스와 14개 시간·가격 선택지, 선입금 없는 100% 현장 후불제를 확인하세요.",
-  keywords: [
-    "서울 출장 안심케어 마사지",
-    "경기 출장마사지",
-    "인천 홈타이",
-    "출장 아로마마사지",
-    "출장 스웨디시",
-    "안심테라피",
-  ],
+    "안심테라피 수도권전역 안내. 스웨디시·아로마·타이 출장 케어 5코스와 14개 시간·가격 선택지를 확인하세요.",
   alternates: {
     canonical: SITE_URL,
   },
@@ -38,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "서울 출장 안심케어 마사지 | 일정에 맞춘 코스 비교 - 안심테라피",
     description:
-      "안심테라피 수도권 전역 안내. 스웨디시·아로마·타이 케어 5코스와 14개 시간·가격 선택지를 확인하세요.",
+      "안심테라피 수도권 전역 안내. 스웨디시·아로마·타이 출장 케어 5코스와 14개 시간·가격 선택지를 확인하세요.",
     url: SITE_URL,
     siteName: "안심테라피",
     locale: "ko_KR",
@@ -233,7 +225,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* 2. 상단 헤더 (참조 레퍼런스 스타일) */}
+      {/* 2. 상단 헤더 */}
       <header className="sticky top-0 z-50 bg-[#0b0c10]/95 backdrop-blur-md border-b border-white/10 px-4 py-3">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
@@ -308,7 +300,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 수도권 전 지역 지역구/시군 선택기 (서울 / 경기 / 인천 탭 구조) */}
+        {/* 수도권 전 지역 지역구/시군 선택기 */}
         <section id="regions" className="bg-[#12161f] border border-white/10 rounded-3xl p-6 space-y-6">
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <div>
