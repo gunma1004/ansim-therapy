@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface ShopItem {
@@ -39,43 +39,43 @@ const defaultShops: ShopItem[] = [
   {
     id: 1,
     name: "안심프라임테라피",
-    desc: "굳은 근육을 부드럽게 이완하는 건식 타이 & 100% 현장 후불제 딥 릴렉스 전문 센터",
+    desc: "선입금 없는 100% 현장 후불제! 전문 테라피스트의 정성 어린 감성 바디 테라피",
     phone: "0508-201-1208",
     price: "70,000원부터~",
-    image: "/assets/hayoung-card-01.webp"
+    image: "/assets/hayoung-card-01.webp",
   },
   {
     id: 2,
     name: "오늘밤안심케어",
-    desc: "천연 에센셜 오일과 정교한 핸드 테크닉의 프리미엄 아로마 바디 순환 안심 케어",
+    desc: "최고급 천연 아로마 오일을 활용한 전신 이완 및 림프 순환 케어 전문 프로그램",
     phone: "0508-201-1208",
     price: "80,000원부터~",
-    image: "/assets/hayoung-card-02.webp"
+    image: "/assets/hayoung-card-02.webp",
   },
   {
     id: 3,
     name: "주주안심홈타이",
-    desc: "타이와 아로마를 결합한 VIP 시그니처 정찰제 힐링 프로그램",
+    desc: "재방문율 높은 안심 케어! 철저한 위생 관리와 품격 있는 정통 타이 & 릴렉싱",
     phone: "0508-201-1208",
     price: "90,000원부터~",
-    image: "/assets/hayoung-card-03.webp"
+    image: "/assets/hayoung-card-03.webp",
   },
   {
     id: 4,
     name: "골든안심테라피",
-    desc: "선입금 없는 정직한 정찰제 운영과 편안한 힐링을 약속하는 감성 스웨디시",
+    desc: "전문 힐러진의 맞춤형 바디 관리, 시간대별 편안한 VIP 피로회복 솔루션",
     phone: "0508-201-1208",
     price: "80,000원부터~",
-    image: "/assets/hayoung-card-04.webp"
+    image: "/assets/hayoung-card-04.webp",
   },
   {
     id: 5,
     name: "퀸즈안심홈케어",
-    desc: "전문 테라피스트들의 1:1 맞춤형 VIP 피로회복 웰니스 안심 후불 케어",
+    desc: "수도권 전지역 엄선된 파트너! 정직한 정찰제와 함께하는 프라이빗 힐링 테라피",
     phone: "0508-201-1208",
     price: "140,000원부터~",
-    image: "/assets/hayoung-card-05.webp"
-  }
+    image: "/assets/hayoung-card-05.webp",
+  },
 ];
 
 export default function ClientTextMixer({
@@ -84,24 +84,27 @@ export default function ClientTextMixer({
   dongName,
   shops = defaultShops
 }: ClientTextMixerProps) {
-  const locationText = dongName ? `${district} ${dongName}`.trim() : `${district}`.trim();
+  const [displayShops, setDisplayShops] = useState(shops);
+  const [mounted, setMounted] = useState(false);
 
-  const introText = useMemo(() => {
-    if (!locationText) return `선입금 없는 출장 안심 마사지 & 바디케어 안내`;
-    const index =
-      Math.abs(
-        locationText
-          .split("")
-          .reduce((acc, char) => acc + char.charCodeAt(0), 0)
-      ) % WELLNESS_PATTERNS.length;
-    return `${locationText} ${WELLNESS_PATTERNS[index]}`;
-  }, [locationText]);
+  useEffect(() => {
+    setMounted(true);
+    const shuffled = [...shops];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setDisplayShops(shuffled);
+  }, [shops]);
+
+  const locationText = dongName ? `${district} ${dongName}`.trim() : `${district}`.trim();
+  const shopsToRender = mounted ? displayShops : shops;
 
   // 🌟 네이버 서치어드바이저 수집 봇과 구글 검색엔진을 위한 ItemList + HealthAndBeautyBusiness 정형 데이터
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    itemListElement: shops.map((shop, idx) => ({
+    itemListElement: shopsToRender.map((shop, idx) => ({
       "@type": "ListItem",
       position: idx + 1,
       item: {
@@ -123,27 +126,17 @@ export default function ClientTextMixer({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
 
-      {/* 1. 지역 단위 상단 클린 키워드 배너 */}
-      <div className="bg-[#66fcf1]/10 border border-[#66fcf1]/30 p-4 rounded-2xl text-center shadow-inner">
-        <p className="text-xs md:text-sm font-black text-[#66fcf1] tracking-wide">
-          ✨ {introText}
-        </p>
-        <p className="text-[11px] text-gray-400 mt-1">
-          {locationText} 출장 마사지 선입금 없는 100% 현장 후불제 추천 코스를 안심테라피에서 편리하게 확인하세요.
-        </p>
-      </div>
-
-      {/* 2. 제휴 샵 리스트 */}
+      {/* 제휴 샵 리스트 섹션 */}
       <section className="space-y-4">
         <div className="flex justify-between items-center">
-          <h2 className="text-sm font-black text-[#66fcf1] tracking-wider uppercase">
+          <h3 className="text-sm font-black text-[#66fcf1] tracking-wider uppercase">
             🏆 {locationText} 안심 후불 추천 제휴점
-          </h2>
+          </h3>
           <span className="text-[11px] text-gray-500">선입금 0원 정찰제 제휴 센터</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {shops.map((shop) => {
+          {shopsToRender.map((shop) => {
             const shopDetailUrl = dongName
               ? `/${region}/${encodeURIComponent(district)}/${encodeURIComponent(dongName)}/shop/${shop.id}`
               : `/${region}/${encodeURIComponent(district)}/shop/${shop.id}`;
@@ -151,12 +144,12 @@ export default function ClientTextMixer({
             return (
               <div
                 key={shop.id}
-                className="bg-gradient-to-br from-[#161b22] to-[#10141b] border border-[#66fcf1]/25 hover:border-[#66fcf1] rounded-2xl p-4 flex gap-4 items-center shadow-lg transition-all group"
+                className="bg-[#141923] border border-[#66fcf1]/20 hover:border-[#66fcf1]/60 rounded-2xl p-4 flex gap-4 items-center shadow-lg transition-all group"
               >
                 {/* 썸네일 이미지 링크 */}
                 <Link
                   href={shopDetailUrl}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 border border-[#66fcf1]/30 block"
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden shrink-0 border border-white/10 block"
                   aria-label={`${shop.name} 상세 정보 보기`}
                 >
                   <img
@@ -172,22 +165,24 @@ export default function ClientTextMixer({
                 {/* 텍스트 및 상세 링크 */}
                 <div className="flex-1 min-w-0">
                   <Link href={shopDetailUrl} className="block">
-                    <h3 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-[#66fcf1] transition-colors">
+                    <h4 className="font-extrabold text-sm md:text-base text-white truncate group-hover:text-[#66fcf1] transition-colors">
                       {shop.name}
-                    </h3>
+                    </h4>
                   </Link>
 
-                  <p className="text-[11px] text-gray-300 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-[11px] text-gray-400 mt-1 line-clamp-2 leading-snug">
                     {shop.desc}
                   </p>
 
                   <div className="mt-2.5 flex items-center justify-between">
-                    <span className="text-xs font-black text-[#66fcf1]">{shop.price}</span>
+                    <span className="text-xs font-black text-[#66fcf1]">
+                      {shop.price}
+                    </span>
 
                     {/* 유선 연결 버튼 */}
                     <a
                       href={`tel:${shop.phone.replace(/-/g, "")}`}
-                      className="bg-[#66fcf1] hover:bg-[#45a29e] text-[#0b0c10] font-black text-xs px-3.5 py-1.5 rounded-xl shadow transition-all active:scale-95"
+                      className="bg-[#66fcf1] hover:bg-[#45a29e] text-[#0b0c10] font-black text-xs px-3.5 py-1.5 rounded-xl shadow hover:brightness-105 active:scale-95 transition-all"
                     >
                       전화연결
                     </a>
