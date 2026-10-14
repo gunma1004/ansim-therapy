@@ -50,12 +50,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  // 🌟 네이버 서치어드바이저 소유권 확인 메타 태그
-  verification: {
-    other: {
-      "naver-site-verification": "3f787f2f6474467f4f9c0aec2fb547c735cd0b15",
-    },
-  },
 };
 
 export default function RootLayout({
@@ -66,7 +60,8 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        {/* 추가적인 메타 설정이나 폰트 연결 등이 필요할 경우 활용 */}
+        {/* 🌟 네이버 소유권 확인 메타 태그 직접 삽입 */}
+        <meta name="naver-site-verification" content="3f787f2f6474467f4f9c0aec2fb547c735cd0b15" />
       </head>
       <body className="bg-[#0b0c10] text-[#c5c6c7] min-h-screen font-sans antialiased selection:bg-[#66fcf1] selection:text-black">
         {children}
