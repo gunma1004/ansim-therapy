@@ -11,8 +11,8 @@ interface PageProps {
 }
 
 const SITE_URL = "https://ansim-therapy.netlify.app";
-const PHONE_NUMBER = "0508-201-1208";
-const PHONE_RAW = "05082011208";
+const PHONE_NUMBER = "0507-1280-3183";
+const PHONE_RAW = "050712803183";
 
 function safeDecode(str: string): string {
   if (!str) return "";

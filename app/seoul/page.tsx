@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 const SITE_URL = "https://ansim-therapy.netlify.app";
-const PHONE_RAW = "05082011208";
+const PHONE_RAW = "0507-1280-3199";
 
 export const metadata: Metadata = {
   title: "서울 출장 안심케어 마사지 | 일정에 맞춘 코스 비교 - 안심테라피",

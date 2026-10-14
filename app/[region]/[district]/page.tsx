@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const SITE_URL = "https://ansim-therapy.netlify.app";
-const PHONE_NUMBER = "0507-1280-3183";
-const PHONE_RAW = "050712803183";
+const PHONE_NUMBER = "0507-1280-3199";
+const PHONE_RAW = "0507-1280-3199";
 
 interface PageProps {
   params: Promise<{

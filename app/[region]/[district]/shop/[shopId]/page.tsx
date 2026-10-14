@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const SITE_URL = "https://ansim-therapy.netlify.app";
-const PHONE_NUMBER = "0508-201-1208";
-const PHONE_RAW = "05082011208";
+const PHONE_NUMBER = "0507-1280-3199";
+const PHONE_RAW = "0507-1280-3199";
 
 interface PageProps {
   params: Promise<{
@@ -64,7 +64,7 @@ const shopData: Record<string, {
   "1": {
     name: "안심프라임테라피",
     cleanName: "안심프라임테라피",
-    phone: PHONE_NUMBER,
+    phone: "0507-1280-3140",
     badge: "100% 후불 정찰제",
     image: "/assets/hayoung-card-01.webp",
     desc: "수도권 전지역 선입금 없는 신속 방문 케어! 출장 타이 마사지, 출장 아로마 마사지, 출장 릴렉스 마사지 전문 제휴처입니다. 숙련된 테라피스트가 계신 곳으로 직접 찾아가 굳은 근육과 묵은 피로를 안전하게 풀어드립니다.",
@@ -79,7 +79,7 @@ const shopData: Record<string, {
   "2": {
     name: "오늘밤안심케어",
     cleanName: "오늘밤안심케어",
-    phone: PHONE_NUMBER,
+    phone: "0507-1280-3199",
     badge: "재방문율 최우수",
     image: "/assets/hayoung-card-02.webp",
     desc: "지친 하루의 피로를 말끔히 풀어드리는 1:1 방문 홈케어! 출장 타이 마사지부터 출장 아로마 마사지까지 원하는 장소에서 선입금 없이 편안하게 정통 힐링을 누려보세요.",
@@ -94,7 +94,7 @@ const shopData: Record<string, {
   "3": {
     name: "주주안심홈타이",
     cleanName: "주주안심홈타이",
-    phone: PHONE_NUMBER,
+    phone: "0507-1280-3197",
     badge: "24시 정찰제 매칭",
     image: "/assets/hayoung-card-03.webp",
     desc: "재방문율 1위 만족도! 정통 출장 타이 마사지와 림프 순환을 돕는 출장 아로마 마사지로 굳어있던 몸을 유연하고 활력 넘치게 회복시켜 드립니다.",
@@ -108,7 +108,7 @@ const shopData: Record<string, {
   "4": {
     name: "골든안심테라피",
     cleanName: "골든안심테라피",
-    phone: PHONE_NUMBER,
+    phone: "0507-1280-3360",
     badge: "베테랑 힐러진",
     image: "/assets/hayoung-card-04.webp",
     desc: "베테랑 테라피스트들의 1:1 방문 케어! 출장 릴렉스 마사지와 전신 출장 아로마 마사지로 수도권 전지역 어디서나 품격 있는 힐링을 선사합니다.",
@@ -122,7 +122,7 @@ const shopData: Record<string, {
   "5": {
     name: "퀸즈안심홈케어",
     cleanName: "퀸즈안심홈케어",
-    phone: PHONE_NUMBER,
+    phone: "0507-1280-3296",
     badge: "안심 케어 만족도 1위",
     image: "/assets/hayoung-card-05.webp",
     desc: "수도권 전지역 신속 도착! 출장 타이 마사지, 출장 아로마 마사지, 출장 릴렉스 마사지를 정직한 선입금 0원 정찰제 가격으로 편안하게 받아보세요.",
