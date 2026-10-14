@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   // 🌟 안심테라피 전용 네이버 서치어드바이저 사이트 소유확인 메타태그
   verification: {
     other: {
-      'naver-site-verification': '02f16dac0744967b0ff30f23b5ee0ba83ce648ac',
+      'naver-site-verification': '3f787f2f6474467f4f9c0aec2fb547c735cd0b15',
     },
   },
   robots: {
